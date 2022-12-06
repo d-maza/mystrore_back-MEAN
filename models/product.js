@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema(    {
     "name" : String,
@@ -9,7 +8,6 @@ const productSchema = new mongoose.Schema(    {
 }, {
     versionKey: false // Debe conocer el resultado después de establecer en falso
 });
-
-    
+ 
 const Product = mongoose.model('product', productSchema)
 module.exports = Product

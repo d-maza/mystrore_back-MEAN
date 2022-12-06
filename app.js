@@ -1,12 +1,3 @@
-// import express from "express"; // Sevidor
-// const app = express();
-
-// import mongoose from "mongoose"; // ORM mapeo objeto-relacional
-// import cors from "cors"; // Uso compartido de recursos entre orígenes - Cross-Origin Resource Sharing
-// import * as dotenv from 'dotenv'
-// dotenv.config()
-// import path from "node:path"; // Rutas relativas (Linux, Wndows, Mac)
-
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');

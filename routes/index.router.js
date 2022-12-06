@@ -2,10 +2,6 @@ const { Router } = require('express');
 const router = Router(); 
 const Product = require('../models/product') 
 
-// import { Router } from "express";
-// import router from Router(); 
-// import Product from '../models/product';
-
 
 // Get all products
 router.get('/api/get_products', async(req, res) => {
