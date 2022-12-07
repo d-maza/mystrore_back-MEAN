@@ -4,23 +4,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-
 // Middleware Connections
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
-app.set("view engine", "ejs"); // Renderizado ejs
-
-// Connect MongoDB at default port 27017.
-mongoose.connect(
-  "mongodb://localhost:27017/products",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    family: 4,
-  },
+mongoose.connect( process.env.MONGODB_URI,
   (err) => {
     if (!err) {
       console.log("🟢 La conexión MongoDB tuvo éxito.");
@@ -30,17 +19,12 @@ mongoose.connect(
   }
 );
 
-  app.get('/', (req, res) => {
-    res.send('Back End in service')
+app.get('/', (req, res) => {
+    res.send('<h2 style="color:green">** Back End in service ** ✔ </h2>')
   })
 
-// Static files (Web)
-//   app.use(express.static(path.join(__dirname, "../public")));
+app.use(require("./routes/index.router"));
 
-// Routes
-  app.use(require("./routes/index.router"));
-
-//  404
 app.use((req, res, next) => {
   res.status(404).send("Dirección no encotrada");
 });
