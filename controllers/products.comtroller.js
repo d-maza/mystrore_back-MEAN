@@ -22,8 +22,37 @@ productosCtrl.add_product = async (req, res) => {
 };
 productosCtrl.delete_product = async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
+    let product = await Product.findByIdAndDelete(req.params.id);
+    res.json({
+      estado: true,
+      mensaje: "Eliminado",
+    });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+productosCtrl.get_product =async (req, res) => {
+  const id = req.params.id;
+  try {
+    const product = await Product.findOne({ _id: id });
     res.send(product);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+productosCtrl.edit_product = async (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+
+  try {
+    const product = await Product.findByIdAndUpdate(id, body, { useFindAndModify: false })
+    res.json({
+      estado: true,
+      mensaje: "Editado",
+    });
+  
   } catch (error) {
     res.status(500).send(error.message);
   }
