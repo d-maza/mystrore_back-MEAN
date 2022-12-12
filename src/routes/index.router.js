@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const {get_products,add_product, delete_product, get_product, edit_product,} = require("../controllers/products.comtroller");
+const {get_products,add_product, delete_product, get_product, edit_product,} = require("../../src/controllers/products.comtroller");
 
 // Routes Productos - App-Jordi
 router.get("/api/get_products", get_products);

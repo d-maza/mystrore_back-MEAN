@@ -12,9 +12,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // Connection to the database with ORM Mongoose
 mongoose.connect(process.env.MONGODB_URI,(err) => {
-     (!err) ?
-      console.log("🟢 La conexión MongoDB tuvo éxito."):
-      console.log("🔴 Error en la conexión DB: " + err);
+     (!err) 
+    ?  console.log("🟢 La conexión MongoDB tuvo éxito.")
+    :  console.log("🔴 Error en la conexión DB: " + err);
   }
 );
 
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
   
 // Routes
-app.use(require("./routes/index.router"));
+app.use(require("./src/routes/index.router"));
 
 // 404 not found
 app.use((req, res, next) => {
