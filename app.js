@@ -1,34 +1,29 @@
-// Import libraries ()
+'use strict';
+// Import libraries 
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const { join } = require("path");
+const optionsWL = require('./src/Middleware/cors')
+const database = require('./src/services/database')
+const morgan = require('morgan'); //Pependencia Desarollo
 
 // Middleware
-app.use(cors());
+app.use(cors(optionsWL));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan('dev'))
 
-// Connection to the database with ORM Mongoose
-mongoose.connect(process.env.MONGODB_URI,(err) => {
-     (!err) 
-    ?  console.log("🟢 La conexión MongoDB tuvo éxito.")
-    :  console.log("🔴 Error en la conexión DB: " + err);
-  }
-);
+// Static files
+app.use(express.static(join(__dirname, "public"))); 
 
-// Get starting in browser
-app.get('/', (req, res) => {
-    res.send('<h2 style="color:peru">** Back End in service  🐙 **</h2>')
-})
-  
 // Routes
-app.use(require("./src/routes/index.router"));
+app.use(require("./src/routes/productsRouter"));
 
 // 404 not found
 app.use((req, res, next) => {
-  res.status(404).send("Dirección no encotrada");
+  res.status(404).send("Ops!! Dirección no encotrada");
 });
 
 // Start server 
@@ -37,5 +32,5 @@ app.listen(port, () => {
   console.log(`🌐 Servidor escuchando en http://localhost:` + port);
 });
 
-
+// console.log(require('crypto').randomBytes(64).toString('hex')); 
 

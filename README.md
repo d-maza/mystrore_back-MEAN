@@ -8,7 +8,7 @@ La aplicación es la parte del BackEnd de una aplicaion strore con Pila MEAN
 
 #### Normar de uso 
 
-Recuerda  que es necesario tener instado NodeJS y decasrgar los repositorios de Express, Mongoose, dotEnv, cors
+Recuerda  que es necesario tener instado NodeJS y decasrgar los repositorios
 
  `npm install `
 
@@ -16,27 +16,18 @@ El ejercicio de ejecuta en el archivo app.js:
 
  `node app`
 
-     
 #### Ejemplo GET de JavaScript Fetch
-
  
- ```
- let headersList = {
- "Accept": "*/*",
- "User-Agent": "Thunder Client (https://www.thunderclient.com)",
- "Content-Type": "application/x-www-form-urlencoded"
+```
+async function get_products() {
+    let response = await fetch("http://localhost:3000/api/get_products", {
+        method: "GET",
+    });
+let data = await response.json();
+console.log(data);
 }
 
-let bodyContent = "name=Teclado ergonomico &price=36&description=Teclado Standar Alfanumerico SPAIN ⌨";
-
-let response = await fetch("http://localhost:3000/api/get_products", { 
-  method: "GET",
-  body: bodyContent,
-  headers: headersList
-});
-
-let data = await response.text();
-console.log(data);
+get_products()
 ```
 
 
@@ -46,17 +37,9 @@ console.log(data);
  
 use Illuminate\Support\Facades\Http;
  
-$response = Http::asForm() 
-    ->withHeaders([ 
-        'Accept'=> '*/*', 
-        'User-Agent'=> 'Thunder Client (https://www.thunderclient.com)', 
-        'Content-Type'=> 'application/x-www-form-urlencoded', 
+$response = Http::withHeaders([ 
     ]) 
-    ->get('http://localhost:3000/api/get_products',[ 
-        'name'=>'Teclado ergonomico ', 
-        'price'=>'36', 
-        'description'=>'Teclado Standar Alfanumerico SPAIN ⌨', 
-    ]); 
+    ->get('http://localhost:3000/api/get_products'); 
 
 echo $response->body();
 ```
