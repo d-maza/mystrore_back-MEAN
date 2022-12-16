@@ -8,4 +8,5 @@ const database = mongoose.connect(process.env.MONGODB_URI, (err) => {
  }
 );
 
-module.exports = database ;
+module.exports = database;
+

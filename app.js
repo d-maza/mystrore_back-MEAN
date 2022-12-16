@@ -32,5 +32,3 @@ app.listen(port, () => {
   console.log(`🌐 Servidor escuchando en http://localhost:` + port);
 });
 
-// console.log(require('crypto').randomBytes(64).toString('hex')); 
-

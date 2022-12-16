@@ -6,9 +6,26 @@ CRUD MONGO - EXPRESS - NODE
 
 ### Normar de uso 🤜🏼🤛🏼
 
-Recuerda  que es necesario tener instado NodeJS y decasrgar los repositorios
+- Ejecuta la clonación del repositorio en tu teminal:
+
+``git clone https://github.com/d-maza/mystrore_back-MEAN.git``
+
+
+
+- Acede a la carpeta con el comando:
+
+`cd mystrore_back-MEAN`
+
+
+- Recuerda  que es necesario tener instado NodeJS, decasrgar los repositorios con en comando.
 
  `npm install `
+
+
+- Elimina el `.example` del archivo `.env.example` quedandote un archivo con el nombre `.env`
+
+
+> En este archivo puedes editar las whitelist de tus accesos permitidos (dominios o puertos) y cambiar en acceso de base de dados (Actuamente esta en localhots:3000)
 
 El ejercicio de ejecuta en el archivo app.js:
 
