@@ -22,12 +22,12 @@ productosCtrl.delete_product = async (req, res) => {
   }
 };
 
-productosCtrl.add_product = async (req, res) => {
+productosCtrl.add_product = (req, res) => {
   try {
-    let product = await productModel.add_product(req.body);
-    res.status(201).send(product);
+    let product =  productModel.add_product(req.body);
+    (!product) ? res.status(204) : res.status(200).send(product);
   } catch (error) {
-      res.status(500).send(error.message);
+     res.status(500).send(error.message);
   }
 };
 
@@ -35,9 +35,9 @@ productosCtrl.get_product = async (req, res) => {
   const id = req.params.id;
   try {
     const product = await productModel.get_product({ _id: id });
-    res.send(product);
+      res.send(product) 
   } catch (error) {
-      res.status(500).send(error.message);
+      res.end(error.message).status(204);
   }
 };
 

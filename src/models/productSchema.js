@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
+const {  Schema, model } = require("mongoose");
 
-const productSchema = new mongoose.Schema(
+const productSchema = new Schema(
   {
     name: String,
     price: Number,
     description: String,
     category: String,
-    reg_time: { type: Date, default: Date.now },
   },
   {
     versionKey: false,
+    timestamps: true
   }
 );
 
-const Product = mongoose.model("product", productSchema);
-module.exports = Product;
+module.exports =  model("Product", productSchema);
+

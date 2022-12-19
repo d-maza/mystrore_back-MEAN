@@ -1,12 +1,13 @@
-'use strict';
 // Import libraries 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const { join } = require("path");
+
 const optionsWL = require('./src/Middleware/cors')
 const database = require('./src/services/database')
+
 const morgan = require('morgan'); //Pependencia Desarollo
 
 // Middleware
@@ -19,7 +20,7 @@ app.use(morgan('dev'))
 app.use(express.static(join(__dirname, "public"))); 
 
 // Routes
-app.use(require("./src/routes/productsRouter"));
+app.use( '/api', require("./src/routes/productsRouter"));
 
 // 404 not found
 app.use((req, res, next) => {

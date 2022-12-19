@@ -17,7 +17,7 @@ CRUD MONGO - EXPRESS - NODE
 `cd mystrore_back-MEAN`
 
 
-- Recuerda  que es necesario tener instado NodeJS, decasrgar los repositorios con en comando.
+- Recuerda que es necesario tener instalado NodeJS, decasrgar los repositorios con en comando.
 
  `npm install `
 
